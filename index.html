@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MODA ECCI — Sara Viloria Conference</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --black:#0a0a0f;--ink:#111118;--panel:#16161f;--border:#2a2a38;
+  --champagne:#e8d5b0;--cream:#f5f0e8;--violet:#8b5cf6;--violet-light:#a78bfa;
+  --rose:#f472b6;--gold:#f59e0b;--white:#ffffff;--text-main:#e2e0dc;--text-muted:#9090a8;
+  --radius:12px;--radius-lg:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--text-main);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Playfair Display',serif;line-height:1.2}
+.section-label{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.25em;color:var(--violet);text-transform:uppercase;margin-bottom:.5rem}
+.section-title{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--white);margin-bottom:1.5rem}
+
+/* NAV */
+#mainNav{background:rgba(10,10,15,.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:.75rem 0;transition:background .3s}
+.navbar-brand{font-family:'Space Mono',monospace;font-size:1.1rem;font-weight:700;letter-spacing:.05em;text-decoration:none}
+.brand-moda{color:var(--white)}.brand-ecci{color:var(--violet)}
+.nav-link{color:var(--text-muted)!important;font-size:.85rem;font-weight:500;transition:color .2s;padding:.5rem .75rem!important}
+.nav-link:hover{color:var(--violet-light)!important}
+.btn-lang{background:transparent;border:1px solid var(--violet);color:var(--violet-light);font-size:.8rem;font-family:'Space Mono',monospace;padding:.4rem 1rem;border-radius:50px;transition:all .2s;cursor:pointer}
+.btn-lang:hover{background:var(--violet);color:var(--white)}
+.navbar-toggler{border-color:var(--border)}.navbar-toggler-icon{filter:invert(1)}
+
+/* HERO */
+.hero-section{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;background:var(--black);overflow:hidden}
+.hero-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(139,92,246,.18) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 80% 20%,rgba(244,114,182,.12) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 60% 80%,rgba(245,158,11,.08) 0%,transparent 60%)}
+.hero-section::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--violet),var(--rose),var(--gold))}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,10,15,.3)}
+.hero-content{position:relative;z-index:2;padding:6rem 1.5rem 4rem}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.3em;color:var(--violet-light);text-transform:uppercase;margin-bottom:1.5rem}
+.hero-title{font-size:clamp(3.5rem,14vw,9rem);font-weight:900;color:var(--white);line-height:.9;letter-spacing:-.02em;margin-bottom:.5rem}
+.hero-title-accent{-webkit-text-stroke:2px var(--violet);color:transparent;display:block}
+.hero-subtitle{font-family:'Space Mono',monospace;font-size:clamp(.85rem,2vw,1.1rem);color:var(--champagne);letter-spacing:.2em;text-transform:uppercase;margin-bottom:2.5rem}
+.hero-quote{max-width:640px;margin:0 auto 2.5rem;font-size:clamp(1.1rem,3vw,1.4rem);font-family:'Playfair Display',serif;font-style:italic;color:var(--champagne);line-height:1.5;padding:1.5rem 2rem;border-left:3px solid var(--violet);border-right:3px solid var(--rose);background:rgba(139,92,246,.08);border-radius:var(--radius)}
+.quote-mark{color:var(--violet);font-size:2rem;line-height:1;vertical-align:bottom}
+.btn-hero-primary{background:var(--violet);border:none;color:var(--white);padding:.85rem 2.2rem;border-radius:50px;font-weight:600;font-size:.9rem;transition:all .25s;text-decoration:none;display:inline-block}
+.btn-hero-primary:hover{background:var(--violet-light);transform:translateY(-2px);color:var(--white);box-shadow:0 8px 30px rgba(139,92,246,.4)}
+.btn-hero-outline{background:transparent;border:1px solid var(--champagne);color:var(--champagne);padding:.85rem 2.2rem;border-radius:50px;font-weight:500;font-size:.9rem;transition:all .25s;text-decoration:none;display:inline-block}
+.btn-hero-outline:hover{background:var(--champagne);color:var(--black);transform:translateY(-2px)}
+.hero-scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2}
+.scroll-dot{width:8px;height:8px;background:var(--violet);border-radius:50%;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0);opacity:1}50%{transform:translateY(10px);opacity:.4}}
+
+/* ALERT */
+.alert-event{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.35);color:var(--text-main);border-radius:var(--radius);font-size:.9rem}
+.alert-event .btn-close{filter:invert(1);opacity:.6}
+
+/* ABOUT */
+.section-about{padding:7rem 0;background:var(--ink)}
+.bio-image-wrapper{position:relative;border-radius:var(--radius-lg);overflow:hidden}
+.bio-image{width:100%;max-height:580px;object-fit:cover;object-position:center 15%;border-radius:var(--radius-lg);display:block}
+.bio-image-caption{position:absolute;bottom:1rem;left:1rem;background:rgba(10,10,15,.75);color:var(--champagne);font-size:.75rem;font-family:'Space Mono',monospace;padding:.4rem .8rem;border-radius:50px;letter-spacing:.1em}
+.bio-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{font-size:.72rem;font-family:'Space Mono',monospace;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);color:var(--violet-light);padding:.25rem .75rem;border-radius:50px;letter-spacing:.05em}
+.bio-text{color:var(--text-muted);font-size:.95rem;line-height:1.8;margin-bottom:1rem}
+.partner-logos{display:flex;gap:1rem;flex-wrap:wrap}
+.partner-tag{font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.15em;color:var(--text-muted);border:1px solid var(--border);padding:.3rem .75rem;border-radius:4px}
+
+/* CONCEPTS */
+.section-concepts{padding:7rem 0;background:var(--black)}
+.concept-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;height:100%;transition:all .25s;position:relative;overflow:hidden}
+.concept-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--rose));opacity:0;transition:opacity .25s}
+.concept-card:hover{border-color:rgba(139,92,246,.4);transform:translateY(-4px);box-shadow:0 12px 40px rgba(139,92,246,.15)}
+.concept-card:hover::before{opacity:1}
+.concept-icon{font-size:2rem;margin-bottom:1rem}
+.concept-card h4{font-size:1.1rem;color:var(--white);margin-bottom:.75rem}
+.concept-card p{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+
+/* EXPERIENCE */
+.section-experience{padding:7rem 0;background:var(--ink)}
+.accord-custom{background:var(--panel)!important;border:1px solid var(--border)!important;border-radius:var(--radius)!important;margin-bottom:.75rem!important;overflow:hidden}
+.accord-btn{background:var(--panel)!important;color:var(--white)!important;font-family:'Inter',sans-serif;font-weight:600;font-size:.95rem;border:none!important;box-shadow:none!important;padding:1.25rem 1.5rem}
+.accord-btn:not(.collapsed){color:var(--violet-light)!important;background:rgba(139,92,246,.08)!important}
+.accord-btn::after{filter:invert(1) brightness(.7)}
+.accord-body{background:rgba(139,92,246,.04)!important;color:var(--text-muted);font-size:.92rem;line-height:1.8;padding:1.5rem}
+.subsection-title{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--white);margin-bottom:1.5rem}
+.video-wrapper{position:relative;padding-top:56.25%;border-radius:var(--radius);overflow:hidden;background:var(--panel)}
+.video-wrapper iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.video-caption{font-size:.82rem;color:var(--text-muted);text-align:center;margin-top:.75rem;font-family:'Space Mono',monospace;letter-spacing:.05em}
+
+/* GALLERY */
+.section-gallery{padding:7rem 0;background:var(--black)}
+.gallery-sub{color:var(--text-muted);font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em}
+.carousel{border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.carousel-img{
+  width:100%;
+  height:auto;
+  max-height:620px;
+  object-fit:contain;
+  object-position:center;
+  display:block;
+  background:#0a0a0f;
+  cursor:zoom-in;
+}
+.carousel-caption-custom{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,10,15,.88));color:var(--champagne);font-family:'Space Mono',monospace;font-size:.78rem;letter-spacing:.1em;padding:2rem 1.5rem 1.5rem;text-align:center}
+.thumb-grid{cursor:pointer}
+.thumb-img{width:100%;height:80px;object-fit:cover;border-radius:8px;transition:all .2s;opacity:.65;border:2px solid transparent;cursor:pointer}
+.thumb-img:hover{opacity:1;border-color:var(--violet);transform:scale(1.04)}
+
+/* LIGHTBOX */
+.lightbox-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:9999;
+  align-items:center;justify-content:center;padding:1rem;
+}
+.lightbox-overlay.active{display:flex}
+.lightbox-img{
+  max-width:100%;
+  max-height:95vh;
+  object-fit:contain;
+  border-radius:var(--radius);
+  box-shadow:0 0 60px rgba(139,92,246,.3);
+}
+.lightbox-close{
+  position:fixed;top:1rem;right:1.25rem;background:none;border:none;color:var(--white);
+  font-size:2rem;cursor:pointer;z-index:10000;opacity:.8;transition:opacity .2s;
+}
+.lightbox-close:hover{opacity:1}
+
+/* GLOSSARY */
+.section-glossary{padding:7rem 0;background:var(--ink)}
+.glossary-sub{color:var(--text-muted);font-family:'Space Mono',monospace;font-size:.8rem;letter-spacing:.1em}
+.gloss-table{--bs-table-bg:transparent;--bs-table-striped-bg:rgba(139,92,246,.05);--bs-table-hover-bg:rgba(139,92,246,.1);color:var(--text-main);border-color:var(--border);font-size:.88rem}
+.gloss-table thead tr{background:rgba(139,92,246,.15)}
+.gloss-table thead th{color:var(--violet-light);font-family:'Space Mono',monospace;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;border-color:var(--border);padding:1rem 1.25rem;font-weight:400}
+.gloss-table tbody td{border-color:var(--border);padding:1rem 1.25rem;vertical-align:middle;color:var(--text-muted)}
+.term-en{color:var(--champagne);font-weight:600;font-family:'Playfair Display',serif;font-size:.95rem}
+.term-es{color:var(--violet-light);font-size:.85rem}
+
+/* SUSTAINABILITY */
+.section-sustainability{padding:7rem 0;background:var(--black);position:relative}
+.section-sustainability::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--violet),var(--rose),var(--gold),transparent)}
+.sustain-intro p{font-size:1.05rem;color:var(--text-muted);max-width:680px;margin:0 auto;line-height:1.8}
+.sustain-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;height:100%;transition:all .25s}
+.sustain-card:hover{border-color:rgba(139,92,246,.35);box-shadow:0 8px 30px rgba(139,92,246,.12)}
+.sustain-highlight{background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(244,114,182,.1));border-color:rgba(139,92,246,.4)}
+.sustain-icon{font-size:2rem;margin-bottom:1rem}
+.sustain-card h5{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--white);margin-bottom:.75rem}
+.sustain-card p{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+
+/* FOOTER */
+.site-footer{background:var(--ink);border-top:1px solid var(--border);padding:3rem 0}
+.footer-brand{font-family:'Space Mono',monospace;font-size:1.5rem;font-weight:700;color:var(--white);letter-spacing:.05em;margin-bottom:.75rem}
+.footer-brand span{color:var(--violet)}
+.footer-quote{font-family:'Playfair Display',serif;font-style:italic;color:var(--champagne);font-size:1rem;margin-bottom:.75rem}
+.footer-credit{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--text-muted);letter-spacing:.05em}
+
+/* MODAL */
+.modal-custom{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius-lg);color:var(--text-main)}
+.modal-header-custom{background:rgba(139,92,246,.15);border-bottom:1px solid var(--border)}
+.modal-header-custom .modal-title{color:var(--violet-light);font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.1em}
+.modal-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.2rem,4vw,1.6rem);color:var(--champagne);line-height:1.5}
+.modal-author{color:var(--violet-light);font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:.1em}
+.modal-context{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+
+/* FLOATING */
+.btn-floating{position:fixed;bottom:2rem;right:2rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--rose));border:none;font-size:1.2rem;cursor:pointer;z-index:1000;box-shadow:0 4px 20px rgba(139,92,246,.4);transition:all .25s;display:flex;align-items:center;justify-content:center}
+.btn-floating:hover{transform:scale(1.1) translateY(-2px);box-shadow:0 8px 30px rgba(139,92,246,.55)}
+section{scroll-margin-top:80px}
+
+/* PRINT */
+@media print {
+  .carousel-img, .thumb-img, .bio-image { max-height:none!important; width:100%!important; object-fit:contain!important; }
+  .lightbox-overlay, .btn-floating, #mainNav, .alert-event { display:none!important; }
+  body { background:white!important; color:black!important; }
+  .section-about, .section-gallery { padding:2rem 0!important; }
+}
+
+/* RESPONSIVE */
+@media(max-width:991px){
+  .navbar-collapse{background:rgba(10,10,15,.97);border-top:1px solid var(--border);padding:1rem;margin-top:.5rem;border-radius:var(--radius)}
+  .hero-quote{padding:1rem 1.25rem}
+  .bio-image{max-height:380px}
+}
+@media(max-width:767px){
+  .section-about,.section-concepts,.section-experience,.section-gallery,.section-glossary,.section-sustainability{padding:4rem 0}
+  .hero-title{font-size:clamp(3rem,18vw,5rem)}
+  .hero-content{padding:5rem 1rem 3rem}
+  .thumb-img{height:60px}
+  .carousel-img{max-height:75vw}
+  .gloss-table{font-size:.78rem}
+  .gloss-table thead th,.gloss-table tbody td{padding:.75rem .5rem}
+  .btn-floating{bottom:1.25rem;right:1.25rem}
+  .hero-quote{font-size:1rem}
+}
+@media(max-width:575px){
+  .partner-logos{gap:.5rem}
+  .hero-subtitle{letter-spacing:.1em;font-size:.75rem}
+  .concept-card{padding:1.5rem}
+  .sustain-card{padding:1.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&#x2715;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt=""/>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="#home"><span class="brand-moda">MODA</span><span class="brand-ecci">ECCI</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <li class="nav-item"><a class="nav-link" href="#home" data-en="Home" data-es="Inicio">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about" data-en="About Sara" data-es="Sobre Sara">About Sara</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience" data-en="My Experience" data-es="Mi Experiencia">My Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#gallery" data-en="Gallery" data-es="Galería">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="#glossary" data-en="Glossary" data-es="Glosario">Glossary</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sustainability" data-en="Sustainability" data-es="Sostenibilidad">Sustainability</a></li>
+        <li class="nav-item ms-lg-2">
+          <button class="btn btn-lang" id="langToggle" onclick="toggleLang()"><span id="langLabel">🌐 Español</span></button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="hero-content container text-center">
+    <div class="hero-eyebrow" data-en="Academic Event · ECCI University · Bogotá" data-es="Evento Académico · Universidad ECCI · Bogotá">Academic Event · ECCI University · Bogotá</div>
+    <h1 class="hero-title">MODA<span class="hero-title-accent">ECCI</span></h1>
+    <p class="hero-subtitle" data-en="Sara Viloria Conference" data-es="Conferencia de Sara Viloria">Sara Viloria Conference</p>
+    <div class="hero-quote">
+      <span class="quote-mark">"</span>
+      <span data-en="Color is the place where our brain and the universe meet" data-es="El color es el lugar donde nuestro cerebro y el universo se encuentran">Color is the place where our brain and the universe meet</span>
+      <span class="quote-mark">"</span>
+    </div>
+    <div class="mt-4 d-flex flex-wrap justify-content-center gap-3">
+      <a href="#experience" class="btn-hero-primary" data-en="Explore Experience" data-es="Ver Experiencia">Explore Experience</a>
+      <a href="#glossary" class="btn-hero-outline" data-en="View Glossary" data-es="Ver Glosario">View Glossary</a>
+    </div>
+  </div>
+  <div class="hero-scroll-indicator"><div class="scroll-dot"></div></div>
+</section>
+
+<!-- ALERT -->
+<div class="container mt-4">
+  <div class="alert alert-event alert-dismissible fade show" role="alert">
+    <strong data-en="🎨 Welcome!" data-es="🎨 ¡Bienvenido!">🎨 Welcome!</strong>
+    <span data-en=" This site documents Moda ECCI featuring Sara Viloria's conference on Color Theory &amp; Pantone. Use 🌐 to switch languages. Click any photo to expand it." data-es=" Este sitio documenta el evento Moda ECCI con la conferencia de Sara Viloria sobre Teoría del Color y Pantone. Usa 🌐 para cambiar idioma. Haz clic en las fotos para ampliarlas."> This site documents Moda ECCI featuring Sara Viloria's conference on Color Theory &amp; Pantone. Use 🌐 to switch languages. Click any photo to expand it.</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+</div>
+
+<!-- ABOUT SARA -->
+<section id="about" class="section-about">
+  <div class="container">
+    <div class="section-label" data-en="SPEAKER" data-es="CONFERENCISTA">SPEAKER</div>
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-7">
+        <div class="bio-image-wrapper">
+          <img src="IMG/sara.png" alt="Sara Viloria" class="bio-image" style="cursor:zoom-in" onclick="openLightbox(this.src)"/>
+          <div class="bio-image-caption" data-en="Sara Viloria at Moda ECCI" data-es="Sara Viloria — Artista del Color">Sara Viloria at Moda ECCI</div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <h2 class="section-title">Sara Viloria</h2>
+        <div class="bio-tags mb-3">
+          <span class="tag">Colorist</span><span class="tag">Pantone Certified</span><span class="tag">Visual Artist</span><span class="tag">Author</span>
+        </div>
+        <p class="bio-text" data-en="Sara Viloria (1991) holds a degree in Visual Arts and a diploma in Illustration and Territorial Art Expression. She is a Certified Colorist trained by Leatrice Eiseman, Executive Director of the Pantone Institute. She has served as Education Coordinator at the MAVI Museum of Visual Arts in Santiago, Cultural Mediator for the Department of Indigenous Peoples, and Art Curator." data-es="Sara Viloria (1991) es Licenciada en Artes Visuales, diplomada en Ilustración y Arte en su expresión territorial. Colorista Certificada por Leatrice Eiseman (Directora ejecutiva del Pantone Institute). Ha trabajado como Coordinadora de educación del Museo de Artes Visuales MAVI de Santiago, Mediadora cultural para el Departamento de pueblos Originarios y Curadora de Arte.">Sara Viloria (1991) holds a degree in Visual Arts and a diploma in Illustration and Territorial Art Expression. She is a Certified Colorist trained by Leatrice Eiseman, Executive Director of the Pantone Institute.</p>
+        <p class="bio-text" data-en="Painter, poet and writer — winner of the Neruda Foundation Grant (2021) and the Lily Peter Fellowship (USA). Author of: 'Color y Acuarela, guía breve para un mundo infinito' and 'Cartas para Siena'." data-es="Pintora, poeta y escritora, ganadora de la Beca Fundación Neruda (2021) y premio Lily Peter Fellowship (USA). Autora de: 'Color y Acuarela, guía breve para un mundo infinito' y 'Cartas para Siena'.">Painter, poet and writer — winner of the Neruda Foundation Grant (2021) and the Lily Peter Fellowship (USA). Author of: <em>Color y Acuarela</em> and <em>Cartas para Siena</em>.</p>
+        <div class="partner-logos mt-4">
+          <span class="partner-tag">ZEISS</span><span class="partner-tag">FUJIFILM</span><span class="partner-tag">PANTONE®</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTS -->
+<section class="section-concepts">
+  <div class="container">
+    <div class="section-label" data-en="CONFERENCE TOPICS" data-es="TEMAS DE LA CONFERENCIA">CONFERENCE TOPICS</div>
+    <h2 class="section-title text-center mb-5" data-en="What We Learned" data-es="Lo Que Aprendimos">What We Learned</h2>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4"><div class="concept-card"><div class="concept-icon">🎨</div><h4 data-en="Color Theory" data-es="Teoría del Color">Color Theory</h4><p data-en="Color is a capricious language. It generates conscious, subconscious, and unconscious responses in the viewer. Understanding it means understanding human perception itself." data-es="El color es un lenguaje caprichoso. Genera respuestas conscientes, subconscientes e inconscientes en el observador. Comprenderlo significa entender la percepción humana.">Color is a capricious language. It generates conscious, subconscious, and unconscious responses in the viewer.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="concept-card"><div class="concept-icon">🔵</div><h4 data-en="Color Semiology" data-es="Semiología del Color">Color Semiology</h4><p data-en="Every color carries a surname (a memory) and a sensation. The study of color signs reveals how societies assign meaning to visual stimuli across cultures and history." data-es="Cada color tiene un apellido (recuerdo) y una sensación. El estudio de los signos del color revela cómo las sociedades asignan significado a los estímulos visuales.">Every color carries a surname (a memory) and a sensation. The study of color signs reveals how societies assign meaning to visual stimuli.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="concept-card"><div class="concept-icon">🟡</div><h4 data-en="Pantone System" data-es="Sistema Pantone">Pantone System</h4><p data-en="The standardized color identification system used globally in fashion, design, and digital interfaces. Each Pantone code represents an exact, reproducible color." data-es="El sistema estandarizado de identificación del color usado globalmente en moda, diseño e interfaces digitales. Cada código Pantone representa un color exacto y reproducible.">The standardized color identification system used globally in fashion, design, and digital interfaces.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="concept-card"><div class="concept-icon">🌡️</div><h4 data-en="Color Temperature" data-es="Temperatura del Color">Color Temperature</h4><p data-en="Colors are divided into warm (reds, oranges, yellows) and cool (blues, violets, greens). Temperature affects emotional perception and spatial depth in visual compositions." data-es="Los colores se dividen en cálidos (rojos, naranjas, amarillos) y fríos (azules, violetas, verdes). La temperatura afecta la percepción emocional y la profundidad espacial.">Colors are divided into warm and cool. Temperature affects emotional perception and spatial depth.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="concept-card"><div class="concept-icon">💫</div><h4 data-en="Color Saturation" data-es="Saturación del Color">Color Saturation</h4><p data-en="Saturation (chroma) radiates outward from a central gray axis. What screams color is high saturation; what appears grayish is low saturation." data-es="La saturación (croma) se proyecta desde un eje central gris. Lo que grita color es alta saturación; lo grisáceo es baja saturación.">Saturation radiates outward from a central gray axis, indicating color intensity.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="concept-card"><div class="concept-icon">🎯</div><h4 data-en="Color Harmonies" data-es="Armonías de Color">Color Harmonies</h4><p data-en="Complementary, triadic, analogous, square, and rectangular — color harmony structures guide visual design decisions from UI interfaces to fashion collections." data-es="Complementarios, triádicos, análogos, cuadrado y rectangulares — las armonías de color guían el diseño visual desde interfaces UI hasta colecciones de moda.">Complementary, triadic, analogous — harmony structures guide all visual design decisions.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="section-experience">
+  <div class="container">
+    <div class="section-label" data-en="PERSONAL REFLECTION" data-es="REFLEXIÓN PERSONAL">PERSONAL REFLECTION</div>
+    <h2 class="section-title" data-en="My Experience at Moda ECCI" data-es="Mi Experiencia en Moda ECCI">My Experience at Moda ECCI</h2>
+    <div class="accordion" id="experienceAccordion">
+      <div class="accordion-item accord-custom"><h2 class="accordion-header"><button class="accordion-button accord-btn" type="button" data-bs-toggle="collapse" data-bs-target="#acc1"><span data-en="📚 Learnings Obtained" data-es="📚 Aprendizajes Obtenidos">📚 Learnings Obtained</span></button></h2><div id="acc1" class="accordion-collapse collapse show" data-bs-parent="#experienceAccordion"><div class="accordion-body accord-body"><p data-en="Attending Moda ECCI was a transformative academic experience. Sara Viloria's conference opened my eyes to the deep connection between visual perception and human emotion. I learned that color is not merely an aesthetic element — it is a language that speaks directly to our subconscious." data-es="Asistir a Moda ECCI fue una experiencia académica transformadora. La conferencia de Sara Viloria me abrió los ojos a la profunda conexión entre percepción visual y emoción humana. Aprendí que el color no es simplemente un elemento estético — es un lenguaje que habla directamente a nuestro subconsciente.">Attending Moda ECCI was a transformative academic experience. Sara Viloria's conference opened my eyes to the deep connection between visual perception and human emotion. Color is not merely an aesthetic element — it is a language that speaks directly to our subconscious.</p></div></div></div>
+      <div class="accordion-item accord-custom"><h2 class="accordion-header"><button class="accordion-button accord-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc2"><span data-en="✨ Most Remarkable Aspects" data-es="✨ Aspectos Más Llamativos">✨ Most Remarkable Aspects</span></button></h2><div id="acc2" class="accordion-collapse collapse" data-bs-parent="#experienceAccordion"><div class="accordion-body accord-body"><p data-en="What struck me most was Sara's ability to blend art history, neuroscience, and design practice in a single talk. Newton's obsessive personality led to the first color wheel; Goethe challenged his theory with a more emotional approach." data-es="Lo que más me impresionó fue la capacidad de Sara de mezclar historia del arte, neurociencia y práctica del diseño en una sola charla. La personalidad obsesiva de Newton llevó a la primera rueda de color; Goethe la desafió con un enfoque más emocional.">What struck me most was Sara's ability to blend art history, neuroscience, and design practice in a single talk. Newton's obsessive personality led to the first color wheel; Goethe challenged his theory with a more emotional approach.</p></div></div></div>
+      <div class="accordion-item accord-custom"><h2 class="accordion-header"><button class="accordion-button accord-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc3"><span data-en="💻 Creative Industry &amp; Software Development" data-es="💻 Industria Creativa y Desarrollo de Software">💻 Creative Industry &amp; Software Development</span></button></h2><div id="acc3" class="accordion-collapse collapse" data-bs-parent="#experienceAccordion"><div class="accordion-body accord-body"><p data-en="The connection between color theory and frontend development is direct. As an ADSO apprentice, choosing a color palette for a web interface is a UX decision, not a stylistic preference." data-es="La conexión entre la teoría del color y el desarrollo frontend es directa. Como aprendiz de ADSO, elegir una paleta de colores para una interfaz web es una decisión de UX, no una preferencia estilística.">The connection between color theory and frontend development is direct. As an ADSO apprentice, choosing a color palette for a web interface is a UX decision, not a stylistic preference.</p></div></div></div>
+      <div class="accordion-item accord-custom"><h2 class="accordion-header"><button class="accordion-button accord-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc4"><span data-en="🔮 Color in User Experience" data-es="🔮 El Color en la Experiencia de Usuario">🔮 Color in User Experience</span></button></h2><div id="acc4" class="accordion-collapse collapse" data-bs-parent="#experienceAccordion"><div class="accordion-body accord-body"><p data-en="Sara's phrase 'every color must generate a conscious, subconscious, and unconscious response' resonated deeply with UX principles. Color accessibility and contrast ratios are technical requirements, not decorative afterthoughts." data-es="La frase de Sara 'todo color debe generar una respuesta consciente, subconsciente e inconsciente' resonó profundamente con los principios de UX. La accesibilidad del color y las relaciones de contraste son requisitos técnicos, no elementos decorativos.">Sara's phrase 'every color must generate a conscious, subconscious, and unconscious response' resonated deeply with UX principles. Color accessibility and contrast ratios are technical requirements.</p></div></div></div>
+      <div class="accordion-item accord-custom"><h2 class="accordion-header"><button class="accordion-button accord-btn collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#acc5"><span data-en="🌱 Professional Formation Reflection" data-es="🌱 Reflexión sobre Formación Profesional">🌱 Professional Formation Reflection</span></button></h2><div id="acc5" class="accordion-collapse collapse" data-bs-parent="#experienceAccordion"><div class="accordion-body accord-body"><p data-en="Events like Moda ECCI are essential to professional formation. They remind us that software development happens at the intersection of technology, art, psychology, and culture." data-es="Eventos como Moda ECCI son esenciales para la formación profesional. Nos recuerdan que el desarrollo de software ocurre en la intersección de tecnología, arte, psicología y cultura.">Events like Moda ECCI are essential to professional formation. They remind us that software development happens at the intersection of technology, art, psychology, and culture.</p></div></div></div>
+    </div>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section-gallery">
+  <div class="container">
+    <div class="section-label" data-en="PHOTO GALLERY" data-es="GALERÍA FOTOGRÁFICA">PHOTO GALLERY</div>
+    <h2 class="section-title text-center mb-2" data-en="Captured Moments" data-es="Momentos Capturados">Captured Moments</h2>
+    <p class="text-center gallery-sub mb-5" data-en="18 unique photos — click to expand" data-es="18 fotos únicas — clic para ampliar">18 unique photos — click to expand</p>
+    <div id="mainCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-indicators"><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="2"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="3"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="4"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="5"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="6"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="7"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="8"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="9"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="10"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="11"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="12"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="13"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="14"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="15"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="16"></button><button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="17"></button></div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="IMG/img02.jpg" class="carousel-img" alt="Opening — Hello Bogotá!" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Opening — Hello Bogotá!" data-es="Apertura — ¡Hola Bogotá!">Opening — Hello Bogotá!</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img06.jpg" class="carousel-img" alt="Sara Viloria — Artist &amp; Colorist" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Sara Viloria — Artist &amp; Colorist" data-es="Sara Viloria — Artista y Colorista">Sara Viloria — Artist &amp; Colorist</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img01.jpg" class="carousel-img" alt="Color Perception Effects" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Color Perception Effects" data-es="Efectos de Percepción del Color">Color Perception Effects</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img03.jpg" class="carousel-img" alt="Pantone — Color + Surname + Sensation" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Pantone — Color + Surname + Sensation" data-es="Pantone — Color + Apellido + Sensación">Pantone — Color + Surname + Sensation</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img04.jpg" class="carousel-img" alt="A person with colors is never alone" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="A person with colors is never alone" data-es="Una persona con colores nunca está sola">A person with colors is never alone</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img05.jpg" class="carousel-img" alt="Defining Color — RAE &amp; Oxford" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Defining Color — RAE &amp; Oxford" data-es="Definiendo el Color — RAE y Oxford">Defining Color — RAE &amp; Oxford</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img07.jpg" class="carousel-img" alt="Color is a Capricious Language" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Color is a Capricious Language" data-es="El Color es un Lenguaje Caprichoso">Color is a Capricious Language</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img08.jpg" class="carousel-img" alt="The History of Color — Cave Paintings" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="The History of Color — Cave Paintings" data-es="Historia del Color — Arte Rupestre">The History of Color — Cave Paintings</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img09.jpg" class="carousel-img" alt="Color Harmonies" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Color Harmonies" data-es="Armonías del Color">Color Harmonies</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img10.jpg" class="carousel-img" alt="Color Through History" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Color Through History" data-es="El Color a Través de la Historia">Color Through History</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img11.jpg" class="carousel-img" alt="Isaac Newton — The First Color Wheel" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Isaac Newton — The First Color Wheel" data-es="Isaac Newton — La Primera Rueda de Color">Isaac Newton — The First Color Wheel</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img12.jpg" class="carousel-img" alt="Goethe's Emotional Color Theory" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Goethe's Emotional Color Theory" data-es="La Teoría Emocional del Color de Goethe">Goethe's Emotional Color Theory</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img13.jpg" class="carousel-img" alt="Color Psychology" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Color Psychology" data-es="Psicología del Color">Color Psychology</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img14.jpg" class="carousel-img" alt="Conscious, Subconscious &amp; Unconscious Color Response" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Conscious, Subconscious &amp; Unconscious Color Response" data-es="Respuesta Consciente, Subconsciente e Inconsciente">Conscious, Subconscious &amp; Unconscious Color Response</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img15.jpg" class="carousel-img" alt="Building Analogous &amp; Contrast Palettes" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Building Analogous &amp; Contrast Palettes" data-es="Construyendo Paletas Análogas y de Contraste">Building Analogous &amp; Contrast Palettes</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img16.jpg" class="carousel-img" alt="Color Temperature — Warm &amp; Cool" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Color Temperature — Warm &amp; Cool" data-es="Temperatura del Color — Cálidos y Fríos">Color Temperature — Warm &amp; Cool</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img17.jpg" class="carousel-img" alt="Saturation — Color Intensity" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Saturation — Color Intensity" data-es="Saturación — Intensidad del Color">Saturation — Color Intensity</div>
+        </div>
+        <div class="carousel-item">
+          <img src="IMG/img18.jpg" class="carousel-img" alt="Analogous Colors &amp; Brand Identity" onclick="openLightbox(this.src)"/>
+          <div class="carousel-caption-custom" data-en="Analogous Colors &amp; Brand Identity" data-es="Colores Análogos e Identidad de Marca">Analogous Colors &amp; Brand Identity</div>
+        </div></div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+    </div>
+  <div class="row g-2 mt-4 thumb-grid"><div class="col-4 col-md-2" onclick="goToSlide(0)"><img src="IMG/img02.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(1)"><img src="IMG/img06.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(2)"><img src="IMG/img01.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(3)"><img src="IMG/img03.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(4)"><img src="IMG/img04.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(5)"><img src="IMG/img05.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(6)"><img src="IMG/img07.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(7)"><img src="IMG/img08.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(8)"><img src="IMG/img09.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(9)"><img src="IMG/img10.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(10)"><img src="IMG/img11.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(11)"><img src="IMG/img12.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(12)"><img src="IMG/img13.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(13)"><img src="IMG/img14.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(14)"><img src="IMG/img15.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(15)"><img src="IMG/img16.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(16)"><img src="IMG/img17.jpg" class="thumb-img" alt=""/></div><div class="col-4 col-md-2" onclick="goToSlide(17)"><img src="IMG/img18.jpg" class="thumb-img" alt=""/></div></div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section id="glossary" class="section-glossary">
+  <div class="container">
+    <div class="section-label" data-en="TECHNICAL VOCABULARY" data-es="VOCABULARIO TÉCNICO">TECHNICAL VOCABULARY</div>
+    <h2 class="section-title text-center" data-en="Glossary" data-es="Glosario">Glossary</h2>
+    <p class="text-center glossary-sub mb-5" data-en="15 key technical terms learned at the event" data-es="15 términos técnicos clave aprendidos en el evento">15 key technical terms learned at the event</p>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover gloss-table">
+        <thead><tr><th data-en="English" data-es="Inglés">English</th><th data-en="Spanish" data-es="Español">Spanish</th><th data-en="Definition" data-es="Definición">Definition</th></tr></thead>
+        <tbody>
+          <tr><td><span class="term-en">Color Theory</span></td><td><span class="term-es">Teoría del Color</span></td><td data-en="The study of how colors generate visual perception, emotion, and meaning in human beings." data-es="Estudio de cómo los colores generan percepción visual, emoción y significado en los seres humanos.">The study of how colors generate visual perception, emotion, and meaning in human beings.</td></tr>
+          <tr><td><span class="term-en">Pantone</span></td><td><span class="term-es">Pantone</span></td><td data-en="Standardized color identification system used globally in design, fashion, and printing." data-es="Sistema estandarizado de identificación del color usado globalmente en diseño, moda e impresión.">Standardized color identification system used globally in design, fashion, and printing.</td></tr>
+          <tr><td><span class="term-en">Saturation</span></td><td><span class="term-es">Saturación</span></td><td data-en="Measure of color intensity; high saturation means vivid color, low saturation means closer to gray." data-es="Medida de la intensidad del color; alta saturación = color vívido; baja saturación = grisáceo.">Measure of color intensity; high saturation means vivid color, low saturation means closer to gray.</td></tr>
+          <tr><td><span class="term-en">Hue</span></td><td><span class="term-es">Tono / Matiz</span></td><td data-en="The pure attribute of a color that distinguishes it from others — red, blue, green, etc." data-es="El atributo puro de un color que lo distingue de otros — rojo, azul, verde, etc.">The pure attribute of a color that distinguishes it from others — red, blue, green, etc.</td></tr>
+          <tr><td><span class="term-en">Semiology</span></td><td><span class="term-es">Semiología</span></td><td data-en="The study of signs and symbols and their interpretation, applied here to visual color meaning." data-es="Estudio de signos y símbolos y su interpretación, aplicado aquí al significado visual del color.">The study of signs and symbols and their interpretation, applied here to visual color meaning.</td></tr>
+          <tr><td><span class="term-en">Color Wheel</span></td><td><span class="term-es">Rueda de Color</span></td><td data-en="Circular diagram representing color relationships, invented by Isaac Newton in 1666." data-es="Diagrama circular que representa las relaciones entre colores, inventado por Isaac Newton en 1666.">Circular diagram representing color relationships, invented by Isaac Newton in 1666.</td></tr>
+          <tr><td><span class="term-en">Complementary Colors</span></td><td><span class="term-es">Colores Complementarios</span></td><td data-en="Colors directly opposite each other on the color wheel that create maximum contrast when paired." data-es="Colores diametralmente opuestos en el círculo cromático que generan máximo contraste al combinarse.">Colors directly opposite each other on the color wheel that create maximum contrast when paired.</td></tr>
+          <tr><td><span class="term-en">Color Harmony</span></td><td><span class="term-es">Armonía Cromática</span></td><td data-en="Pleasing arrangement of colors based on their relationships on the color wheel." data-es="Disposición agradable de colores basada en sus relaciones en el círculo cromático.">Pleasing arrangement of colors based on their relationships on the color wheel.</td></tr>
+          <tr><td><span class="term-en">User Experience (UX)</span></td><td><span class="term-es">Experiencia de Usuario</span></td><td data-en="The overall experience of a person using a product, especially in terms of how easy or pleasing it is to use." data-es="La experiencia general de una persona al usar un producto, especialmente en términos de facilidad o agrado.">The overall experience of a person using a product, especially in terms of how easy or pleasing it is to use.</td></tr>
+          <tr><td><span class="term-en">Responsive Design</span></td><td><span class="term-es">Diseño Responsivo</span></td><td data-en="Web design approach ensuring content adapts visually to different screen sizes and devices." data-es="Enfoque de diseño web que garantiza que el contenido se adapte visualmente a diferentes tamaños de pantalla.">Web design approach ensuring content adapts visually to different screen sizes and devices.</td></tr>
+          <tr><td><span class="term-en">Visual Identity</span></td><td><span class="term-es">Identidad Visual</span></td><td data-en="The collection of visual elements — color, typography, imagery — that represent a brand or organization." data-es="El conjunto de elementos visuales — color, tipografía, imágenes — que representan una marca u organización.">The collection of visual elements — color, typography, imagery — that represent a brand or organization.</td></tr>
+          <tr><td><span class="term-en">Color Temperature</span></td><td><span class="term-es">Temperatura del Color</span></td><td data-en="Classification of colors as warm (reds, oranges, yellows) or cool (blues, purples, greens) based on psychological effect." data-es="Clasificación de colores en cálidos o fríos según efecto psicológico.">Classification of colors as warm (reds, oranges, yellows) or cool (blues, purples, greens) based on psychological effect.</td></tr>
+          <tr><td><span class="term-en">Frontend Development</span></td><td><span class="term-es">Desarrollo Frontend</span></td><td data-en="The practice of building the visual and interactive parts of a website using HTML, CSS, and JavaScript." data-es="La práctica de construir las partes visuales e interactivas de un sitio web con HTML, CSS y JavaScript.">The practice of building the visual and interactive parts of a website using HTML, CSS, and JavaScript.</td></tr>
+          <tr><td><span class="term-en">Chroma</span></td><td><span class="term-es">Croma</span></td><td data-en="Another term for saturation; the colorfulness of an area relative to the brightness of a similarly illuminated white area." data-es="Otro término para saturación; la viveza del color relativa al brillo de un área blanca igualmente iluminada.">Another term for saturation; the colorfulness of an area relative to the brightness of a similarly illuminated white area.</td></tr>
+          <tr><td><span class="term-en">Analogous Colors</span></td><td><span class="term-es">Colores Análogos</span></td><td data-en="Any group of three or more colors adjacent to each other on the color wheel, creating a naturally harmonious palette." data-es="Cualquier grupo de tres o más colores adyacentes en el círculo cromático, creando una paleta naturalmente armoniosa.">Any group of three or more colors adjacent to each other on the color wheel, creating a naturally harmonious palette.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SUSTAINABILITY -->
+<section id="sustainability" class="section-sustainability">
+  <div class="container">
+    <div class="section-label" data-en="CONCLUSION" data-es="CONCLUSIÓN">CONCLUSION</div>
+    <h2 class="section-title text-center" data-en="Technology, Sustainability &amp; Circular Economy" data-es="Tecnología, Sostenibilidad y Economía Circular">Technology, Sustainability &amp; Circular Economy</h2>
+    <div class="sustain-intro text-center mb-5"><p data-en="The fashion and creative industries are major contributors to environmental impact. As future technology professionals, we have a responsibility to build digital products that promote sustainability." data-es="Las industrias de la moda y las creativas son grandes contribuyentes al impacto ambiental. Como futuros profesionales de la tecnología, tenemos la responsabilidad de construir productos digitales que promuevan la sostenibilidad.">The fashion and creative industries are major contributors to environmental impact. As future technology professionals, we have a responsibility to build digital products that promote sustainability.</p></div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4"><div class="sustain-card"><div class="sustain-icon">♻️</div><h5 data-en="Waste Reduction" data-es="Reducción de Residuos">Waste Reduction</h5><p data-en="Digital platforms enable fashion brands to move from physical catalogs to virtual showrooms, eliminating tons of printed materials." data-es="Las plataformas digitales permiten a las marcas de moda pasar de catálogos físicos a showrooms virtuales, eliminando toneladas de materiales impresos.">Digital platforms enable fashion brands to move from physical catalogs to virtual showrooms, eliminating tons of printed materials.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="sustain-card"><div class="sustain-icon">🔄</div><h5 data-en="Reuse &amp; Circular Design" data-es="Reutilización y Diseño Circular">Reuse &amp; Circular Design</h5><p data-en="The circular economy model promotes designing for longevity. In software, this means component-based architecture and design systems." data-es="El modelo de economía circular promueve diseñar para la longevidad. En el software, esto significa arquitectura basada en componentes y sistemas de diseño.">The circular economy model promotes designing for longevity. In software, this means component-based architecture and design systems.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="sustain-card"><div class="sustain-icon">⚡</div><h5 data-en="Resource Optimization" data-es="Optimización de Recursos">Resource Optimization</h5><p data-en="Optimized code means less server energy consumption. Efficient frontend development reduces the carbon footprint of digital products." data-es="El código optimizado significa menos consumo de energía. El desarrollo frontend eficiente reduce la huella de carbono de los productos digitales.">Optimized code means less server energy consumption. Efficient frontend development reduces the carbon footprint of digital products.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="sustain-card"><div class="sustain-icon">🌿</div><h5 data-en="Sustainable Production" data-es="Producción Sostenible">Sustainable Production</h5><p data-en="Slow fashion and sustainable design share values with agile software development: iteration, quality, longevity." data-es="La moda lenta y el diseño sostenible comparten valores con el desarrollo ágil de software: iteración, calidad, longevidad.">Slow fashion and sustainable design share values with agile software development: iteration, quality, longevity.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="sustain-card"><div class="sustain-icon">🌍</div><h5 data-en="Positive Environmental Impact" data-es="Impacto Ambiental Positivo">Positive Environmental Impact</h5><p data-en="Technology can amplify sustainable fashion movements. ADSO skills create real environmental value through ethical digital products." data-es="La tecnología puede amplificar los movimientos de moda sostenible. Las habilidades ADSO crean valor ambiental real a través de productos digitales éticos.">Technology can amplify sustainable fashion movements. ADSO skills create real environmental value through ethical digital products.</p></div></div>
+      <div class="col-md-6 col-lg-4"><div class="sustain-card sustain-highlight"><div class="sustain-icon">💡</div><h5 data-en="Final Reflection" data-es="Reflexión Final">Final Reflection</h5><p data-en="Moda ECCI showed me that creativity, technology, and responsibility intersect in the most meaningful work. Color theory is about choices that affect people and planet." data-es="Moda ECCI me mostró que la creatividad, la tecnología y la responsabilidad se intersectan en el trabajo más significativo. La teoría del color trata de decisiones que afectan a las personas y al planeta.">Moda ECCI showed me that creativity, technology, and responsibility intersect in the most meaningful work. Color theory is about choices that affect people and planet.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container text-center">
+    <div class="footer-brand">MODA<span>ECCI</span></div>
+    <p class="footer-quote" data-en='"Color is the place where our brain and the universe meet"' data-es='"El color es el lugar donde nuestro cerebro y el universo se encuentran"'>"Color is the place where our brain and the universe meet"</p>
+    <p class="footer-credit" data-en="Sara Viloria Conference · ECCI University · 2026 · Built with HTML5, CSS3, Bootstrap &amp; JavaScript" data-es="Conferencia Sara Viloria · Universidad ECCI · 2026 · Construido con HTML5, CSS3, Bootstrap y JavaScript">Sara Viloria Conference · ECCI University · 2026 · Built with HTML5, CSS3, Bootstrap &amp; JavaScript</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal fade" id="quoteModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content modal-custom">
+      <div class="modal-header modal-header-custom">
+        <h5 class="modal-title" data-en="Sara Viloria's Key Quote" data-es="Frase Clave de Sara Viloria">Sara Viloria's Key Quote</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center p-5">
+        <div class="modal-quote"><span data-en='"Color is the place where our brain and the universe meet"' data-es='"El color es el lugar donde nuestro cerebro y el universo se encuentran"'>"Color is the place where our brain and the universe meet"</span></div>
+        <p class="mt-3 modal-author">— Sara Viloria</p>
+        <p class="modal-context" data-en="This phrase encapsulates the entire philosophy of Moda ECCI: color is not just visual — it is the bridge between human consciousness and the physical world." data-es="Esta frase encapsula toda la filosofía de Moda ECCI: el color no es solo visual — es el puente entre la conciencia humana y el mundo físico.">This phrase encapsulates the entire philosophy of Moda ECCI: color is not just visual — it is the bridge between human consciousness and the physical world.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn-floating" onclick="showQuoteModal()" title="Key Quote">✨</button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+let currentLang='en';
+function toggleLang(){currentLang=currentLang==='en'?'es':'en';applyLang(currentLang);}
+function applyLang(lang){
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    const val=el.getAttribute('data-'+lang);
+    if(val!==null){if(el.children.length===0)el.textContent=val;else el.innerHTML=val;}
+  });
+  document.documentElement.setAttribute('lang',lang);
+  const lbl=document.getElementById('langLabel');
+  if(lbl)lbl.textContent=lang==='en'?'🌐 Español':'🌐 English';
+  document.title=lang==='en'?'MODA ECCI — Sara Viloria Conference':'MODA ECCI — Conferencia de Sara Viloria';
+}
+function goToSlide(i){
+  const c=document.getElementById('mainCarousel');
+  if(c)bootstrap.Carousel.getOrCreateInstance(c).to(i);
+}
+function showQuoteModal(){new bootstrap.Modal(document.getElementById('quoteModal')).show();}
+function openLightbox(src){
+  document.getElementById('lightboxImg').src=src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('mainNav');
+  if(window.scrollY>60){nav.style.padding='.4rem 0';nav.style.background='rgba(10,10,15,.98)';}
+  else{nav.style.padding='.75rem 0';nav.style.background='rgba(10,10,15,.92)';}
+});
+document.addEventListener('DOMContentLoaded',()=>{
+  const targets=document.querySelectorAll('.concept-card,.sustain-card,.accord-custom,.bio-image-wrapper,.video-wrapper');
+  targets.forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity .6s ease,transform .6s ease';});
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach((e)=>{
+      if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)';obs.unobserve(e.target);}
+    });
+  },{threshold:0.1});
+  targets.forEach(el=>obs.observe(el));
+  applyLang('en');
+});
+</script>
+</body>
+</html>
